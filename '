@@ -1,0 +1,47 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"io"
+	"log"
+	"math/bits"
+	"os"
+	"strconv"
+)
+
+func scanInput(r io.Reader) ([]int64, error) {
+	var input []int64
+
+	scanner := bufio.NewScanner(r)
+	for scanner.Scan() {
+		// break this loop if we have empty string.
+		if scanner.Text() == "" {
+			break
+		}
+		v, err := strconv.ParseInt(scanner.Text(), 2, 64)
+		if err != nil {
+			return nil, fmt.Errorf("unable to scan input: %w", err)
+		}
+
+		input = append(input, v)
+	}
+
+	return input, nil
+}
+
+func main() {
+	input, err := scanInput(os.Stdin)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, number := range input {
+		bits.Len()
+	}
+}
+
+// bit returns n'th bit of the val.
+func bit(val int64, n int) int {
+	return ((val >> (n - 1)) & 1)
+}
